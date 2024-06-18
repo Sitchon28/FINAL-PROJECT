@@ -1,1 +1,34 @@
+print("3")
+import time
+
+def typing_challenge(text_to_type):
+    print("Welcome to the Typing Challenge!")
+    print("Type the following text as accurately and quickly as possible:\n")
+    print(text_to_type)
+    
+    input("Press Enter when you are ready to start...")
+    
+    start_time = time.time()
+    user_input = input("Type the text here: ")
+    end_time = time.time()
+    
+    elapsed_time = end_time - start_time
+    
+    correct_chars = sum(1 for u, t in zip(user_input, text_to_type) if u == t)
+    accuracy = (correct_chars / len(text_to_type)) * 100
+    
+    words_per_minute = len(user_input.split()) / (elapsed_time / 60) if elapsed_time > 0 else 0
+    
+    print("\nResults:")
+    print(f"Time taken: {elapsed_time:.2f} seconds")
+    print(f"Accuracy: {accuracy:.2f}%")
+    print(f"Words per minute (WPM): {words_per_minute:.2f}")
+    
+    # Score calculation (Example: combine accuracy and WPM into a score formula)
+    score = accuracy * (words_per_minute / 10)
+    print(f"Your score: {score:.2f}")
+
+challenge_text = "The quick brown fox jumps over the lazy dog."
+
+typing_challenge(challenge_text)
 
