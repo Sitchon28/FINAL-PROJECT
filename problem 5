@@ -1,0 +1,53 @@
+
+print("5")
+def get_player_choice():
+    while True:
+        player_choice = input("Enter your choice (rock/paper/scissors): ").strip().lower()
+        if player_choice in ['rock', 'paper', 'scissors']:
+            return player_choice
+        else:
+            print("Invalid choice! Please enter 'rock', 'paper', or 'scissors'.")
+
+def determine_round_winner(player1_choice, player2_choice):
+    if player1_choice == player2_choice:
+        return None  # Tie
+    
+    if (player1_choice == 'rock' and player2_choice == 'scissors') or \
+       (player1_choice == 'scissors' and player2_choice == 'paper') or \
+       (player1_choice == 'paper' and player2_choice == 'rock'):
+        return 1  # Player 1 wins
+    
+    return 2  # Player 2 wins
+
+def play_best_of_three():
+    player1_wins = 0
+    player2_wins = 0
+    
+    while player1_wins < 2 and player2_wins < 2:
+        print("\nRound Start!")
+        
+        player1_choice = get_player_choice()
+        player2_choice = random.choice(['rock', 'paper', 'scissors'])  # Computer choice
+        
+        print(f"Player 1 chose: {player1_choice}")
+        print(f"Player 2 chose: {player2_choice}")
+        
+        round_winner = determine_round_winner(player1_choice, player2_choice)
+        
+        if round_winner == 1:
+            print("Player 1 wins this round!")
+            player1_wins += 1
+        elif round_winner == 2:
+            print("Player 2 wins this round!")
+            player2_wins += 1
+        else:
+            print("It's a tie this round!")
+        
+        print(f"Score: Player 1 - {player1_wins}, Player 2 - {player2_wins}")
+    
+    if player1_wins == 2:
+        print("\nPlayer 1 wins the game!")
+    else:
+        print("\nPlayer 2 wins the game!")
+
+play_best_of_three()
