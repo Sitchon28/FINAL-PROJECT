@@ -1,0 +1,57 @@
+print("4")
+def display_menu():
+    print("Unit Conversion Menu:")
+    print("1. Millimeters to Centimeters")
+    print("2. Centimeters to Meters")
+    print("3. Feet to Meters")
+    print("4. Inches to Centimeters")
+    print("5. Kilometers to Miles")
+
+def millimeters_to_centimeters(mm):
+    return mm / 10
+
+def centimeters_to_meters(cm):
+    return cm / 100
+
+def feet_to_meters(feet):
+    return feet * 0.3048
+
+def inches_to_centimeters(inches):
+    return inches * 2.54
+
+def kilometers_to_miles(km):
+    return km * 0.621371
+
+def unit_conversion(choice):
+    if choice == 1:
+        mm = float(input("Enter length in millimeters: "))
+        cm = millimeters_to_centimeters(mm)
+        print(f"{mm} mm is equal to {cm:.2f} cm.")
+    elif choice == 2:
+        cm = float(input("Enter length in centimeters: "))
+        m = centimeters_to_meters(cm)
+        print(f"{cm} cm is equal to {m:.2f} m.")
+    elif choice == 3:
+        feet = float(input("Enter length in feet: "))
+        m = feet_to_meters(feet)
+        print(f"{feet} ft is equal to {m:.2f} m.")
+    elif choice == 4:
+        inches = float(input("Enter length in inches: "))
+        cm = inches_to_centimeters(inches)
+        print(f"{inches} inches is equal to {cm:.2f} cm.")
+    elif choice == 5:
+        km = float(input("Enter length in kilometers: "))
+        miles = kilometers_to_miles(km)
+        print(f"{km} km is equal to {miles:.2f} miles.")
+    else:
+        print("Invalid choice. Please select a number from 1 to 5.")
+
+while True:
+    display_menu()
+    choice = int(input("Enter your choice (1-5): "))
+    unit_conversion(choice)
+    
+    continue_or_not = input("Do you want to convert another unit? (yes/no): ").lower()
+    if continue_or_not != 'yes':
+        print("Thank you for using the unit conversion program!")
+        break
